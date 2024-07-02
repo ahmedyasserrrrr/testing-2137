@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-7fV9x2Aua0m7L5t5N+dyNbUdL88k0A8BzwJe4f7sF3ajJpZIC4WReMChujVf7reZIw7LnbWShs2qVhRO5y5iJw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Changa&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        body {
+            font-family: "Changa", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            right: 0;
+            background-color: #0A284E;
+            overflow-x: hidden;
+            transition: width 0.5s ease;
+            padding-top: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (max-width: 992px) {
+            .sidenav {
+                width: 0;
+            }
+        }
+
+        .navbar-toggler {
+            color: #fff;
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+        }
+
+        .container-main {
+            padding-right: 0; /* تأكد من عدم وجود padding-right افتراضي */
+            transition: padding-right 0.5s;
+            
+        }
+
+        @media screen and (min-width: 992px) {
+            .container-main {
+                padding-right: 250px; /* زيادة padding-right لتفادي تغطية المحتوى */
+            }
+        }
+
+        .sidenav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            left: auto;
+            position: static;
+            
+            display: flex;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #fff;
+        }
+            @media (min-width: 992px) {
+        .customers-table {
+            width: calc(100% - 250px); /* جعل عرض الجدول يأخذ باقي المساحة عند فتح الحافة الجانبية */
+            margin-left: 250px; /* تحريك الجدول إلى اليمين لتفادي تغطية الحافة الجانبية */
+        }
+    }
+
+    /* تعديل حجم الجدول على شاشات صغيرة */
+    @media (max-width: 991px) {
+        .customers-table {
+            width: 100%; /* جعل الجدول يأخذ العرض الكامل عندما تكون الشاشة صغيرة */
+            margin-left: 0; /* إعادة تعيين التباعد الأيسر للجدول */
+        }
+    }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+
+        .nav-icons {
+            display: none;
+        }
+
+        .nav-icons.active {
+            display: block;
+            cursor: pointer;
+        }
+
+        .navbar {
+            background-color: #fff; /* لون خلفية Navbar */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* إضافة ظل للناف بار */
+            position: fixed;
+            width: 100%; /* عرض الناف بار على الشاشة بالكامل */
+            z-index: 2; /* تحديد الترتيب الظاهري فوق الصفحة */
+            top: 0; /* تثبيت الناف بار في أعلى الصفحة */
+            text-align: center; /* محاذاة العناصر في الناف بار بالوسط */
+        }
+
+        .navbar-brand {
+            color: #0A284E; /* لون النص للعلامة التجارية */
+            font-weight: bold; /* سمك الخط */
+            padding: 15px 0; /* تباعد النص داخل العلامة التجارية */
+            display: block; /* عرض العلامة التجارية كعنصر بلوك */
+        }
+
+        .navbar-nav {
+            margin: 0 auto; /* توسيط الروابط داخل الناف بار */
+        }
+
+        .nav-item {
+            display: inline-block; /* عرض العناصر كعناصر متجانسة */
+            margin-left: 20px; /* تباعد بين العناصر */
+        }
+
+        .nav-link {
+            color: #0A284E; /* لون النص للروابط */
+            font-weight: 500; /* سمك الخط */
+            text-decoration: none; /* إزالة تزيين الروابط */
+            padding: 15px 10px; /* تباعد النص داخل الروابط */
+            transition: all 0.3s ease; /* تحويل التحولات لجميع الخصائص */
+        }
+
+        .nav-link:hover {
+            color: #fff; /* لون النص عند التحويم */
+            border-radius: 5px; /* تدوير الزوايا للروابط عند التحويم */
+        }
+
+        .stats-section {
+            padding: 30px ;
+            text-align: center;
+            font-size: small;
+
+        }
+
+        .stats-card1 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid #0A284E;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card2 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid red;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card3 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid seagreen;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card4 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid #C2E0C6;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card5 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid #F5D0E8;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card6 {
+            background-color: #fff;
+            padding: 8px;
+            margin: 8px;
+            border: 1px solid rgb(204,153, 255);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 6px;
+        }
+
+        .requests-section {
+            padding: 50px 0;
+            text-align: right;
+        }
+        .requestss-section {
+            padding:30px 0;
+            margin-top: 40px;
+            text-align: right;
+        }
+
+        .customers-table {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; /* تحديد تخطيط الجدول ليكون ثابتًا */
+}
+
+.customers-table td, .customers-table th {
+    padding: 12px; /* تعديل التباعد الداخلي لخلايا الجدول */
+    text-align: center; /* محاذاة النص في وسط الخلايا */
+    word-wrap: break-word; /* تمكين الكلمات الطويلة من الانقسام عند الضرورة */
+    white-space: normal; /* ضبط المسافات بين الكلمات */
+}
+
+@media (max-width: 768px) {
+    .customers-table {
+        box-shadow: none; /* إزالة الظل على الجدول في الأجهزة المحمولة */
+        border-radius: 0; /* إزالة تدوير الزوايا في الأجهزة المحمولة */
+    }
+}
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm fixed">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" style="color: #0A284E;">الرئيسية</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+     
+    </div>
+ </nav>
+ <script>
+
+</script>
+ <div class="sidenav">
+    <div style="text-align: center; margin-bottom: 30px; ">
+        <img src="image/WhatsApp Image 2024-06-14 at 8.23.00 PM.jpeg"  width="100px" style="justify-content: center;  margin: auto;" alt="">
+
+    </div>
+    <style>
+        /* أسلوب اختياري لتخصيص حجم الأيقونات */
+        .fa {
+            font-size: 24px;
+            margin-right: 5px; /* تعديل حسب الحاجة */
+        }
+    </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <a href="index.html" >  <i class="fas fa-home" style="margin-top: 2px ; padding: 2px;"></i> الرئيسية  </a> 
+    <a href="قصتنا.html">      <i class="fas fa-users" style="margin-top: 3px ; padding: 2px;"></i>
+        المستخدمين</a>
+    <a href="#">      <i class="fas fa-tasks" style="margin-top: 3px ; padding: 2px;"></i>
+        مشاريع   </a>
+    <a href="#">    <i class="far fa-calendar-check" style="margin-top: 3px ; padding: 2px;"></i>
+حجوزات    </a>
+    <a href="test.html">     <i class="far fa-image"  style="margin-top: 3px ; padding: 2px;"></i>
+صور    </a>
+</div>
+ <div class="container-main">
+  
+    <div class="stats-section">
+        <div class="container">
+            <div class="requestss-section">
+                <div class="container">
+                    <h2> الاحصائيات</h2>
+                </div>
+            </div>    
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <div class="stats-card1">
+                        <h5> اجمالي الطلبات: 234</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card2">
+                        <h5>لم يتم الرد: 36</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card3">
+                        <h5> تم الاتصال: 257</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- الأسطر الإضافية للإحصائيات -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stats-card4">
+                        <h5>تم الموافقه: 0</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card5">
+                        <h5>تم البيع: 0 </h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card6">
+                        <h5>خيارات اخري </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="requests-section">
+        <div class="container">
+            <h2>آخر الطلبات</h2>
+            <p>قائمة بآخر الطلبات التي تلقيناها.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <table class="customers-table">
+            <thead>
+                <tr  style="background-color: whitesmoke;">
+                    <th>اسم العميل</th>
+                    <th>نوع العقار </th>
+                    <th>رقم الهاتف</th>
+                    <th>ملاحظات</th>
+                    <th>الدولة</th>
+                    <th>الرمز البريدي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>عميل 1</td>
+                    <td>شقق</td>
+                    <td>354</td>
+                    <td> العميل 1</td>
+                    <td>المدينة 1</td>
+                    <td>الدولة 1</td>
+                </tr>
+                <tr>
+                    <td>عميل 2</td>
+                    <td>شقق</td>
+                    <td>688</td>
+                    <td> العميل 2</td>
+                    <td>المدينة 2</td>
+                    <td>الدولة 2</td>
+                </tr>
+                <tr>
+                    <td>عميل 3</td>
+                    <td>شقق</td>
+                    <td>7687</td>
+                    <td> العميل 3</td>
+                    <td>المدينة 3</td>
+                    <td>الدولة 3</td>
+                </tr>
+                <tr>
+                    <td>عميل 4</td>
+                    <td>شقق</td>
+                    <td>7897</td>
+                    <td> العميل 4</td>
+                    <td>المدينة 4</td>
+                    <td>الدولة 4</td>
+                </tr>
+                <tr>
+                    <td>عميل 5</td>
+                    <td>شقق</td>
+                    <td>7474</td>
+                    <td> العميل 5</td>
+                    <td>المدينة 5</td>
+                    <td>الدولة 5</td>
+                </tr>
+                <tr>
+                    <td>عميل 6</td>
+                    <td>شقق</td>
+                    <td>1234</td>
+                    <td> العميل 6</td>
+                    <td>المدينة 6</td>
+                    <td>الدولة 6</td>
+                </tr>
+                <tr>
+                    <td>عميل 7</td>
+                    <td>شقق</td>
+                    <td>6787</td>
+                    <td> العميل 7</td>
+                    <td>المدينة 7</td>
+                    <td>الدولة 7</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidenav = document.querySelector('.sidenav');
+            const navIcons = document.querySelector('.navbar-toggler');
+            const closeBtn = document.querySelector('.closebtn');
+    
+            // فتح القائمة الجانبية من اليمين
+            navIcons.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    sidenav.style.width = '250px'; // تعيين عرض القائمة على الشاشات الصغيرة
+                }
+            });
+    
+       
+        function openNav() {
+        document.getElementById(".sidenav").style.width = "250px";
+        document.getElementById("main").style.marginRight = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById(".sidenav").style.width = "0";
+        document.getElementById("main").style.marginRight = "0";
+    }
+    
+        // فتح القائمة الجانبية عند النقر على الايقونة
+        navbarToggler.addEventListener('click', function() {
+            sidenav.style.width = '250px';
+        });
+
+    </script>
